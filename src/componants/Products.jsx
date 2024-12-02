@@ -53,8 +53,7 @@ function Products() {
                     <button type="button" className="px-4 py-2 bg-blue-500 text-[18px] font-medium w-full rounded-xl">Buy</button>
                     <button onClick={()=> addCart(product)} type="button" className="px-4 py-2 bg-orange-500 text-[18px] font-medium w-full rounded-xl">Add Cart</button>
                   </div>
-              </div>
-              
+              </div>              
           ))}     
       </div>
     </>

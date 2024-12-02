@@ -3,7 +3,7 @@ import { CartContext } from './CartContext';
 
 const Cart = () => {
 
-  const {cart , removeFromCart} = useContext(CartContext)
+  const {cart , removeFromCart , updateQuantity } = useContext(CartContext)
   console.log("main cart",cart)
   
   const calculateTotal = () => {
@@ -11,11 +11,16 @@ const Cart = () => {
   };
 
 
+  const handleQuantityChange = (id, newQuantity) => {
+    if (newQuantity >= 1) {
+      updateQuantity(id, newQuantity); 
+    }
+  };
+
   return (
     <div className="max-w-screen-xl mx-auto p-4">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         
-        {/* Cart Items */}
         <div className="col-span-2 bg-white p-4 shadow-md">
           <h2 className="text-2xl font-semibold mb-4">Shopping Cart</h2>
 
@@ -33,17 +38,17 @@ const Cart = () => {
                 <h3 className="font-semibold">{Product.title}</h3>
                 <p className="text-gray-600">{Product.price}</p>
                 <div className="flex items-center mt-2">
-                  {/* <label className="text-sm mr-2">Qty:</label> */}
-                  <p className="text-gray-600">Quantity: {Product.quantity}</p>
-                  {/* <input
+                  <label className="text-sm mr-2">Qty:</label>
+                  {/* <p className="text-gray-600">Quantity: {Product.quantity}</p> */}
+                  <input
                     type="number"
                     min="1"
-                    value="1"
+                    value={Product.quantity}
+                    onChange={(e) => handleQuantityChange(Product.id, Number(e.target.value))}
                     className="w-12 text-center p-1 border rounded-md"
-                    readOnly
-                  /> */}
+                  />
                 </div>
-              </div>
+              </div>  
 
 
               <div className="ml-auto">
@@ -51,11 +56,9 @@ const Cart = () => {
                 <button onClick={()=>{removeFromCart(Product.id)}} className="mt-2 text-red-500 hover:underline">Remove</button>
               </div>
             </div>
-
             ))}
         </div>
 
-        {/* Order Summary */}
         <div className="bg-white p-4 shadow-md">
           <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
           <div className="flex justify-between mb-2">
