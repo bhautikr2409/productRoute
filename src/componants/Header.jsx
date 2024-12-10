@@ -1,28 +1,29 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from './CartContext';
+import AddProductFormModel from './addProductFormModel';
 
 
 const Header = () => {
-  
-  const {cart} = useContext(CartContext)
+
+  const { cart } = useContext(CartContext)
 
 
   return (
     <header className="bg-gray-800 text-white">
       <div className="max-w-screen-xl mx-auto flex items-center justify-between py-2 px-4">
-        
+
         {/* Logo */}
-       
-            <Link to={"/"} className="flex items-center space-x-2">
-                <img
-                src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
-                alt="Amazon Logo"
-                className="w-24 h-auto"
-            />
-            </Link>
-         
-       
+
+        <Link to={"/"} className="flex items-center space-x-2">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
+            alt="Amazon Logo"
+            className="w-24 h-auto"
+          />
+        </Link>
+
+
 
         {/* Search Bar */}
         <div className="flex-grow mx-4">
@@ -40,8 +41,8 @@ const Header = () => {
 
         {/* Nav Links */}
         <div className="flex space-x-6">
-        <Link to={'/'} className="flex items-center font-bold">Home</Link>
-    
+          <Link to={'/'} className="flex items-center font-bold">Home</Link>
+
           <div className="flex items-center">
             <span className="font-bold"> Orders</span>
           </div>
@@ -50,8 +51,10 @@ const Header = () => {
             <span className="font-bold">Cart</span>
             <span>({cart.length} 🛒)</span>
           </Link>
-         
-         
+
+          <AddProductFormModel  />
+
+
         </div>
       </div>
     </header>
