@@ -40,7 +40,7 @@ function Products() {
                   className="flex flex-col items-center justify-between"
 
                   >
-                  <h1 className="text-[18px] font-medium">{product.title}</h1>
+                  <h1 className="text-[18px] font-medium text-black">{product.title}</h1>
                   <img
                     className="max-w-[300px] h-[300px]"
                     src={product.image}
