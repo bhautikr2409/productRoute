@@ -28,11 +28,11 @@ function Products() {
 
   return (
     <>
-      <div className="grid grid-rows-4 grid-flow-col gap-4 my-6">
+      <div className="grid grid-rows-4 grid-flow-col gap-4 my-6 px-2">
              
           {products.map((product , index) => (
 
-              <div key={index}  className="border border-black max-w-[500px] p-5 flex flex-col items-center justify-between">
+              <div key={index}  className="border border-black max-w-[500px] p-5 flex flex-col items-center justify-between bg-white">
 
                 <Link
                   to={`/product/${product.id}`}
@@ -50,8 +50,8 @@ function Products() {
                 </Link>
 
                   <div className="flex justify-between gap-9 mt-5">
-                    <button type="button" className="px-4 py-2 bg-blue-500 text-[18px] font-medium w-full rounded-xl">Buy</button>
-                    <button onClick={()=> addCart(product)} type="button" className="px-4 py-2 bg-orange-500 text-[18px] font-medium w-full rounded-xl">Add Cart</button>
+                    <button type="button" className="px-4 py-2 text-white bg-blue-500 text-[18px] font-medium w-full rounded-xl">Buy</button>
+                    <button onClick={()=> addCart(product)} type="button" className="px-4 py-2 text-white bg-orange-500 text-[18px] font-medium w-full rounded-xl">Add Cart</button>
                   </div>
               </div>              
           ))}     
