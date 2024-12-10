@@ -2,11 +2,20 @@
 import React from 'react';
 
 const Footer = () => {
+
+  // scroll to top
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <footer className="bg-gray-800 text-white">
       {/* Back to Top Button */}
       <div className="bg-gray-700 text-center py-4 cursor-pointer hover:bg-gray-600">
-        <a href="#top" className="text-sm font-semibold">Back to Top</a>
+        <button onClick={scrollToTop}   className="text-sm font-semibold">Back to Top</button>
       </div>
 
       {/* Footer Navigation Links */}
