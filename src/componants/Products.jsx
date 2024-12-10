@@ -46,7 +46,7 @@ function Products() {
                     src={product.image}
                     alt={product.title}
                     />
-                  <span className="text-[20px] font-semibold mt-5">{product.price}</span>
+                  <span className="text-[20px] mt-5 text-black font-semibold">{product.price}</span>
                 </Link>
 
                   <div className="flex justify-between gap-9 mt-5">
