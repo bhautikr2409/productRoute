@@ -5,48 +5,33 @@ import AddProductFormModel from './addProductFormModel';
 
 const Header = () => {
   const { cart } = useContext(CartContext);
-  const [scrollUp, setScrollUp] = useState(true);
-  const [lastScrollTop, setLastScrollTop] = useState(0);
   const headerRef = useRef(null);
+
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-      // Log scroll position for debugging
-      console.log('Scroll position:', currentScrollTop);
-
-      // Detect scroll direction
-      if (currentScrollTop > lastScrollTop) {
-        setScrollUp(false); // Scrolling down
+      if (window.scrollY > lastScrollY) {
+        setIsHeaderVisible(false);
       } else {
-        setScrollUp(true);  // Scrolling up
+        setIsHeaderVisible(true);
       }
-
-      setLastScrollTop(currentScrollTop <= 0 ? 0 : currentScrollTop); // Update last scroll position
-
-      if (headerRef.current) {
-        // Apply Tailwind fixed class when scrolling down
-        if (currentScrollTop > 0) {
-          headerRef.current.classList.add("fixed", "top-0", "w-full", "z-50");
-          headerRef.current.classList.remove("sticky"); // Remove sticky if it's applied
-        } else {
-          headerRef.current.classList.remove("fixed", "top-0", "w-full", "z-50");
-          headerRef.current.classList.add("sticky"); // Revert back to sticky at top
-        }
-      }
+      setLastScrollY(window.scrollY);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, [lastScrollTop]);
-
+  }, [lastScrollY]);
 
   return (
-    <header ref={headerRef} className="bg-gray-800 text-white sticky top-0 w-full transition-all duration-300">
+    <header
+      ref={headerRef}
+      className={`bg-gray-800 text-white sticky top-0 w-full transition-all duration-500 ease-in-out ${isHeaderVisible ? 'transform translate-y-0' : 'transform -translate-y-full'}`}
+    >
       <div className="max-w-screen-xl mx-auto flex items-center justify-between py-2 px-4">
         {/* Logo */}
         <Link to={"/"} className="flex items-center space-x-2">

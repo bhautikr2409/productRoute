@@ -96,7 +96,7 @@ const AddProductFormModel = () => {
       {/* Add Product Modal */}
       <dialog id="my_modal_1" className="modal">
         <div className="modal-box">
-          <h2 className="text-lg font-bold mb-4">Add Product</h2>
+          <h2 className="text-lg font-bold">Add Product</h2>
           <form onSubmit={handleSubmit}>
             {/* Product Name */}
             <div className="mb-4">
