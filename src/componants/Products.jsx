@@ -42,7 +42,7 @@ function Products() {
 
   return (
     <>
-      <div className="grid grid-rows-4 grid-flow-col gap-4 my-6 px-2">
+      <div className="grid  grid-flow-col gap-4 my-6 px-2">
         {products.map((product, index) => (
           <div
             key={index}
